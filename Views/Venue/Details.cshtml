@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model EventEaseWebApp.Models.Venue
+@{
+    ViewData["Title"] = "Venue Details";
+}
+<h1>Venue Details</h1>
+<div>
+    <p><strong>Name:</strong> @Model.VenueName</p>
+    <p><strong>Location:</strong> @Model.Location</p>
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" width="150" alt="Venue Image" />
+    }
+    <p><strong>Capacity:</strong> @Model.Capacity</p>
+    <p><strong>Availability:</strong> @(Model.IsAvailable ? "Yes" : "No")</p>
+</div>
+<a asp-action="Edit" asp-route-id="@Model.VenueId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

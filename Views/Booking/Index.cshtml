@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Bookings";
+}
+<h2>Bookings</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Venue</th>
+            <th>Event</th>
+            <th>Booking Date</th>
+            <th>Event Date</th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Venue?.VenueName</td>
+                <td>@booking.Event?.EventName</td>
+                <td>@booking.BookingDate.ToShortDateString()</td>
+                <td>@booking.EventDate.ToShortDateString()</td>
+                            
+                <td>
+                    <a class="btn btn-sm btn-info" href="/Booking/Details/@booking.BookingId">Details</a>
+                    <a class="btn btn-sm btn-warning" href="/Booking/Edit/@booking.BookingId">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="/Booking/Delete/@booking.BookingId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-success" href="/Booking/Create">Create New Booking</a>

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Event>
+@{
+    ViewData["Title"] = "Events";
+}
+<h2>Events</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Event</a>
+    <a asp-controller="Booking" asp-action="Index" class="btn btn-secondary ms-2">Check Bookings</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.EventId</td>
+                <td>@e.EventName</td>
+                <td>@e.Description</td>
+                <td>@e.EventType?.Name</td>
+                <td>@e.EventDate.ToShortDateString()</td>
+
+                <td>
+                    <a class="btn btn-sm btn-info" href="/Event/Details/@e.EventId">Details</a>
+                    <a class="btn btn-sm btn-warning" href="/Event/Edit/@e.EventId">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="/Event/Delete/@e.EventId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

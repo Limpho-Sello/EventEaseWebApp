@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model EventEaseWebApp.Models.Venue
+
+@{
+    ViewData["Title"] = "Edit Venue";
+
+}
+<h2>Edit Venue</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="VenueName" class="control-label"></label>
+        <input asp-for="VenueName" class="form-control" />
+        <span asp-validation-for="VenueName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Capacity" class="control-label"></label>
+        <input asp-for="Capacity" class="form-control" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Upload New Image</label>
+        <input type="file" name="ImageFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsAvailable"></label>
+        <input asp-for="IsAvailable" class="form-check-input" />
+    </div>
+
+    <input type="hidden" asp-for="VenueId" />
+    <input type="hidden" asp-for="ImageUrl" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
